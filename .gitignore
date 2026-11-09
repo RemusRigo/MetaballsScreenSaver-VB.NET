@@ -1,0 +1,36 @@
+#------------------------------------------------
+# © 2026 Remus Rigo
+#    2026-08-16
+#------------------------------------------------
+
+# My ignored files ------------------------------
+~Backup~
+~ToDo~
+[Ss]ync.*
+*.psd
+
+__history		# Delphi
+__recovery		# Delphi
+.claude			# Claude Code
+.mypy_cache		# Python
+.vs			# Visual Studio
+[Bb]in			# compiler binaries
+[Bb]uild		# Python
+[Dd]ist			# Python
+[Oo]bj			# compiled binaries
+[Tt]arget		# Rust
+
+*.bak			# backup
+*.dproj.local		# Delphi
+*.dsk			# Delphi
+*.dsv			# Delphi
+*.groupproj.local	# Delphi
+*.identcache		# Delphi
+*.log			# log
+*.lps			# Lazarus
+*.spec			# Python
+*.tmp			# temporary
+*.tvsconfig		# Delphi
+
+[Dd]esktop.ini		# Windows
+[Tt]humbs.db		# Windows

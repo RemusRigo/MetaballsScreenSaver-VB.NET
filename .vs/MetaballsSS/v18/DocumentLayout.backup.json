@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\My Projects\\VB.NET\\Metaballs SS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9DB391-96A5-4946-839F-EB6FCE2B41D8}|MetaballsSS\\MetaballsSS.vbproj|d:\\my projects\\vb.net\\metaballs ss\\metaballsss\\forms\\frmcfg.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{AE9DB391-96A5-4946-839F-EB6FCE2B41D8}|MetaballsSS\\MetaballsSS.vbproj|solutionrelative:metaballsss\\forms\\frmcfg.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE9DB391-96A5-4946-839F-EB6FCE2B41D8}|MetaballsSS\\MetaballsSS.vbproj|d:\\my projects\\vb.net\\metaballs ss\\metaballsss\\forms\\frmcfg.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{AE9DB391-96A5-4946-839F-EB6FCE2B41D8}|MetaballsSS\\MetaballsSS.vbproj|solutionrelative:metaballsss\\forms\\frmcfg.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmCfg.vb",
+              "DocumentMoniker": "D:\\My Projects\\VB.NET\\Metaballs SS\\MetaballsSS\\Forms\\frmCfg.vb",
+              "RelativeDocumentMoniker": "MetaballsSS\\Forms\\frmCfg.vb",
+              "ToolTip": "D:\\My Projects\\VB.NET\\Metaballs SS\\MetaballsSS\\Forms\\frmCfg.vb",
+              "RelativeToolTip": "MetaballsSS\\Forms\\frmCfg.vb",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAkwHYAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-08T20:35:58.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmCfg.vb [Design]",
+              "DocumentMoniker": "D:\\My Projects\\VB.NET\\Metaballs SS\\MetaballsSS\\Forms\\frmCfg.vb",
+              "RelativeDocumentMoniker": "MetaballsSS\\Forms\\frmCfg.vb",
+              "ToolTip": "D:\\My Projects\\VB.NET\\Metaballs SS\\MetaballsSS\\Forms\\frmCfg.vb [Design]",
+              "RelativeToolTip": "MetaballsSS\\Forms\\frmCfg.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-08T20:33:14.144Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

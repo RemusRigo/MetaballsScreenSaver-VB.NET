@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+   <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+   <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+   <AssemblyName>MetaballsSS</AssemblyName>
+   <OptionExplicit>On</OptionExplicit>
+   <OptionStrict>On</OptionStrict>
+   <OutputType>WinExe</OutputType>
+   <Platforms>x64;x86</Platforms>
+   <RootNamespace>MetaballsSS</RootNamespace>
+   <StartupObject>Sub Main</StartupObject>
+   <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
+   <UseWindowsForms>true</UseWindowsForms>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(TargetFramework)' != ''">
+   <TfmName>$(TargetFramework.Replace('-windows', ''))</TfmName>
+   <OutputPath>..\bin\$(Configuration)\$(TfmName) $(Platform)\</OutputPath>
+   <IntermediateOutputPath>obj\$(Configuration)\$(TfmName) $(Platform)\</IntermediateOutputPath>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Platform)' == 'x86' Or '$(Platform)' == 'x64'">
+   <PlatformTarget>$(Platform)</PlatformTarget>
+</PropertyGroup>
+
+<ItemGroup>
+   <EmbeddedResource Include="Res\PayPal.png" LogicalName="PayPal.png" />
+   <EmbeddedResource Include="Res\Revolut.png" LogicalName="Revolut.png" />
+</ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+
+<Target Name="RenameToScr" AfterTargets="Build">
+   <Move Condition="Exists('$(TargetDir)$(AssemblyName).exe')" SourceFiles="$(TargetDir)$(AssemblyName).exe" DestinationFiles="$(TargetDir)$(AssemblyName).scr" />
+   <Move Condition="Exists('$(TargetDir)$(AssemblyName).exe.config')" SourceFiles="$(TargetDir)$(AssemblyName).exe.config" DestinationFiles="$(TargetDir)$(AssemblyName).scr.config" />
+   <Delete Condition="'$(Configuration)' == 'Release' And Exists('$(TargetDir)$(AssemblyName).pdb')" Files="$(TargetDir)$(AssemblyName).pdb" />
+</Target>
+
+</Project>
