@@ -193,6 +193,8 @@ Partial Class frmCfg
       ' 
       ' frmCfg
       ' 
+      AcceptButton = btnOk
+      CancelButton = btnCancel
       ClientSize = New Size(547, 468)
       Controls.Add(pnlPreview)
       Controls.Add(lblGlowIntensity)
@@ -208,7 +210,12 @@ Partial Class frmCfg
       Controls.Add(rBtnRed)
       Controls.Add(rBtnBlue)
       Controls.Add(lblColorScheme)
+      FormBorderStyle = FormBorderStyle.FixedToolWindow
+      MaximizeBox = False
+      MinimizeBox = False
       Name = "frmCfg"
+      StartPosition = FormStartPosition.CenterScreen
+      Text = "Settings"
       CType(tbSpeed, ComponentModel.ISupportInitialize).EndInit()
       CType(tbRadius, ComponentModel.ISupportInitialize).EndInit()
       CType(tbGlowIntensity, ComponentModel.ISupportInitialize).EndInit()

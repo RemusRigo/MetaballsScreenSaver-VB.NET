@@ -42,6 +42,7 @@ See the [User's Guide](Users%20Guide.md) for downloads, runtimes, installation a
 
 ## 🗺️ Roadmap
 
+* 2026-11-09: Add: About form
 * 2026-11-08: Fix: Settings form OK/Cancel buttons now close the dialog; settings are saved on OK only, Cancel discards changes
 * 2026-11-08: Upd: Changed logic in Settings form (frmCfg)
 * 2026-11-07: Upd: Changed logic in AppSettings

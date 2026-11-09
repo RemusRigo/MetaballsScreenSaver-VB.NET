@@ -99,7 +99,7 @@ Partial Class frmAbout
       Name = "frmAbout"
       ShowIcon = False
       ShowInTaskbar = False
-      StartPosition = FormStartPosition.CenterScreen
+      StartPosition = FormStartPosition.CenterParent
       Text = "About"
       CType(imgPayPal, ComponentModel.ISupportInitialize).EndInit()
       CType(imgRevolut, ComponentModel.ISupportInitialize).EndInit()

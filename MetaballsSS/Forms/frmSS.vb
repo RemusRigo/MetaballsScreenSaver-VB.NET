@@ -1,13 +1,18 @@
+﻿'--------------------------------------------------------------------------------------------------
+' MetaballsSS: frmSS.vb
+'   © 2026 Remus Rigo
+'       v1.0.20261109
+'--------------------------------------------------------------------------------------------------
+
 Imports System.Runtime.InteropServices
+Imports MetaballsSS.API
 
 ''' <summary>
-''' Renders the lava field full-screen on one monitor, or embedded inside the
-''' tiny thumbnail Windows gives us for /p preview mode. Any key press,
-''' mouse click, or real mouse movement raises ExitRequested so Main.vb
-''' can tear every monitor's form down together.
+''' Renders the lava field full-screen on one monitor, or embedded inside the tiny thumbnail Windows gives us for /p preview mode.
+''' Any key press, mouse click, or real mouse movement raises ExitRequested so Main.vb can tear every monitor's form down together.
 ''' </summary>
-Public Class frmSS
-   Inherits Form
+''' 
+Partial Public Class frmSS
 
    Public Event ExitRequested As EventHandler
 
@@ -20,43 +25,13 @@ Public Class frmSS
    Private _mouseInitialized As Boolean
    Private Const MouseMoveThreshold As Integer = 8
 
-   <DllImport("user32.dll")>
-   Private Shared Function SetParent(hWndChild As IntPtr, hWndNewParent As IntPtr) As IntPtr
-   End Function
-
-   <DllImport("user32.dll")>
-   Private Shared Function GetClientRect(hWnd As IntPtr, ByRef lpRect As RECT) As Boolean
-   End Function
-
-   Private Sub InitializeComponent()
-      SuspendLayout()
-      ' 
-      ' frmSS
-      ' 
-      ClientSize = New Size(624, 441)
-      Name = "frmSS"
-      ResumeLayout(False)
-
-   End Sub
-
-   <DllImport("user32.dll")>
-   Private Shared Function SetWindowLong(hWnd As IntPtr, nIndex As Integer, dwNewLong As Integer) As Integer
-   End Function
-
    Private Const GWL_STYLE As Integer = -16
    Private Const WS_CHILD As Integer = &H40000000
    Private Const WS_VISIBLE As Integer = &H10000000
 
-   <StructLayout(LayoutKind.Sequential)>
-   Private Structure RECT
-      Public Left As Integer
-      Public Top As Integer
-      Public Right As Integer
-      Public Bottom As Integer
-   End Structure
-
    ''' <summary>Preview mode: embed as a child of the small dialog thumbnail.</summary>
    Public Sub New(previewHandle As IntPtr)
+      InitializeComponent()
       _isPreview = True
       InitializeFormBase()
 
@@ -82,6 +57,7 @@ Public Class frmSS
 
    ''' <summary>Screensaver mode: borderless, full-screen on the given monitor.</summary>
    Public Sub New(scr As Screen)
+      InitializeComponent()
       _isPreview = False
       InitializeFormBase()
 

@@ -10,8 +10,9 @@
    <Platforms>x64;x86</Platforms>
    <RootNamespace>MetaballsSS</RootNamespace>
    <StartupObject>Sub Main</StartupObject>
-   <TargetFrameworks>net8.0-windows;net10.0-windows</TargetFrameworks>
+   <TargetFrameworks>net48;net8.0-windows;net10.0-windows</TargetFrameworks>
    <UseWindowsForms>true</UseWindowsForms>
+   <ApplicationIcon>Res\Metaballs.ico</ApplicationIcon>
 </PropertyGroup>
 
 <PropertyGroup Condition="'$(TargetFramework)' != ''">
@@ -25,6 +26,10 @@
 </PropertyGroup>
 
 <ItemGroup>
+  <Content Include="Res\Metaballs.ico" />
+</ItemGroup>
+
+<ItemGroup>
    <EmbeddedResource Include="Res\PayPal.png" LogicalName="PayPal.png" />
    <EmbeddedResource Include="Res\Revolut.png" LogicalName="Revolut.png" />
 </ItemGroup>
@@ -34,7 +39,6 @@
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
-
 
 <Target Name="RenameToScr" AfterTargets="Build">
    <Move Condition="Exists('$(TargetDir)$(AssemblyName).exe')" SourceFiles="$(TargetDir)$(AssemblyName).exe" DestinationFiles="$(TargetDir)$(AssemblyName).scr" />

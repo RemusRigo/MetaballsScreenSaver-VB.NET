@@ -1,13 +1,12 @@
-Imports System
+'--------------------------------------------------------------------------------------------------
+' MetaballsSS: AppSettings.vb
+'   © 2026 Remus Rigo
+'       v1.0.20261109
+'--------------------------------------------------------------------------------------------------
+
 Imports System.Globalization
 Imports Microsoft.Win32
 
-''' <summary>
-''' Central place for every user setting. Call LoadSettings() to read all
-''' values from HKCU into the properties below, change the properties, then
-''' call SaveSettings() to write them all back. The config dialog (/c) and the
-''' actual screensaver (/s) both go through here so they agree on what to draw.
-''' </summary>
 Public Module AppSettings
 
    Private Const RegistryPath As String = "Software\Remus RIGO\MetaballsSS.VB-NET"

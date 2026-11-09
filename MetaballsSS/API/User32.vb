@@ -165,15 +165,14 @@ Namespace API
       Public Function ReleaseDC(hwnd As IntPtr, hDC As IntPtr) As Integer
       End Function
 
-      ' Def 1
+      '------------------------
       <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
       Public Function SendMessage(hWnd As IntPtr, Msg As UInteger, wParam As IntPtr, lParam As IntPtr) As IntPtr
       End Function
-
-      ' Def 2
       <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
       Public Function SendMessage(hWnd As IntPtr, Msg As UInteger, wParam As IntPtr, ByRef lParam As RECT) As IntPtr
       End Function
+      '------------------------
 
       <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
       Public Function SetLayeredWindowAttributes(hWnd As IntPtr, crKey As UInteger, bAlpha As Byte, dwFlags As UInteger) As Boolean

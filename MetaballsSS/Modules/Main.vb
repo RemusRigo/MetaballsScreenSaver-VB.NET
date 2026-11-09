@@ -1,89 +1,79 @@
-Imports System
-Imports System.Collections.Generic
-Imports System.Windows.Forms
+'--------------------------------------------------------------------------------------------------
+' MetaballsSS: Main.vb: Main()
+'   © 2026 Remus Rigo
+'       v1.0.20261109
+'--------------------------------------------------------------------------------------------------
 
 ''' <summary>
 ''' Standard Windows screensaver command-line contract:
 '''   /c or /c:hwnd   -> show the settings dialog
 '''   /p hwnd (or /p:hwnd) -> render embedded in the picker's preview thumbnail
 '''   /s              -> run full-screen across every monitor
-'''   (no arguments)  -> also runs full-screen, so double-clicking the exe while
-'''                      developing shows the effect immediately
+'''   (no arguments)  -> also runs full-screen, so double-clicking the exe while developing shows the effect immediately
 ''' </summary>
 Module Main
 
-    <STAThread>
-    Sub Main(args As String())
-        Application.EnableVisualStyles()
-        Application.SetCompatibleTextRenderingDefault(False)
+   <STAThread>
+   Sub Main(args As String())
+#If Not NETFRAMEWORK Then
+      Application.SetHighDpiMode(HighDpiMode.PerMonitorV2)
+#End If
+      Application.EnableVisualStyles()
+      Application.SetCompatibleTextRenderingDefault(False)
 
-        Dim previewHandle As IntPtr = IntPtr.Zero
-        Dim mode As String = "screensaver"
+      Dim mode As String = "/s" ' default: start screensaver
+      If args.Length > 0 AndAlso args(0).Length >= 2 Then
+         mode = args(0).Substring(0, 2).ToLower()
+      End If
 
-        If args.Length > 0 Then
-            Dim arg0 As String = args(0).Trim()
+      Select Case mode
+         Case "/s" : RunScreensaver()
+         Case "/c" : ShowConfig()
+         Case "/p"
+            Dim h As IntPtr = ParsePreviewHandle(args)
+            If h <> IntPtr.Zero Then RunPreview(h)
+      End Select
+   End Sub
 
-            If arg0.StartsWith("/c", StringComparison.OrdinalIgnoreCase) Then
-                mode = "config"
-            ElseIf arg0.StartsWith("/p", StringComparison.OrdinalIgnoreCase) Then
-                mode = "preview"
-                Dim handleText As String = ""
-                Dim colonIndex = arg0.IndexOf(":"c)
-                If colonIndex >= 0 Then
-                    handleText = arg0.Substring(colonIndex + 1)
-                ElseIf args.Length > 1 Then
-                    handleText = args(1)
-                End If
+   '-----------------------------------------------------------------------------------------------
+   ' ParsePreviewHandle: Extracts the preview window handle from the command-line arguments.
+   Private Function ParsePreviewHandle(args As String()) As IntPtr
+      Dim arg0 As String = args(0).Trim()
+      Dim handleText As String = ""
 
-                Dim handleValue As Long
-                If Long.TryParse(handleText, handleValue) Then
-                    previewHandle = New IntPtr(handleValue)
-                End If
-            ElseIf arg0.StartsWith("/s", StringComparison.OrdinalIgnoreCase) Then
-                mode = "screensaver"
-            End If
-        End If
+      Dim colonIndex As Integer = arg0.IndexOf(":"c)
+      If colonIndex >= 0 Then
+         handleText = arg0.Substring(colonIndex + 1)
+      ElseIf args.Length > 1 Then
+         handleText = args(1)
+      End If
 
-        Select Case mode
-            Case "config"
-                Application.Run(New frmCfg())
-            Case "preview"
-                If previewHandle <> IntPtr.Zero Then
-                    Application.Run(New frmSS(previewHandle))
-                End If
-            Case Else
-                RunScreensaver()
-        End Select
-    End Sub
+      Dim handleValue As Long
+      If Long.TryParse(handleText, handleValue) Then Return New IntPtr(handleValue)
+      Return IntPtr.Zero
+   End Function
 
-    Private Sub RunScreensaver()
-        Dim context As New ApplicationContext()
-        Dim forms As New List(Of frmSS)
+   '-----------------------------------------------------------------------------------------------
+   ' RunScreensaver: Creates a frmSS for each monitor and runs the application message loop.
+   Private Sub RunScreensaver()
+      For Each monitor As Screen In Screen.AllScreens
+         Dim frm As New frmSS(monitor)
+         AddHandler frm.ExitRequested, Sub() Application.Exit()
+         frm.Show()
+      Next
+      Application.Run()
+   End Sub
 
-        For Each scr As Screen In Screen.AllScreens
-            Dim f As New frmSS(scr)
-            AddHandler f.FormClosed, Sub(s, e)
-                                          forms.Remove(f)
-                                          If forms.Count = 0 Then
-                                              context.ExitThread()
-                                          End If
-                                      End Sub
-            forms.Add(f)
-        Next
+   '-----------------------------------------------------------------------------------------------
+   ' ShowConfig: Creates a frmCfg and runs the application message loop.
+   Private Sub ShowConfig()
+      Application.Run(New frmCfg())
+   End Sub
 
-        For Each f In forms
-            AddHandler f.ExitRequested, Sub()
-                                             For Each other In forms.ToArray()
-                                                 other.Close()
-                                             Next
-                                         End Sub
-        Next
-
-        For Each f In forms
-            f.Show()
-        Next
-
-        Application.Run(context)
-    End Sub
+   '-----------------------------------------------------------------------------------------------
+   ' RunPreview: Creates a frmSS for the given preview window handle and runs the application message loop.
+   Private Sub RunPreview(previewHandle As IntPtr)
+      Application.Run(New frmSS(previewHandle))
+   End Sub
 
 End Module
