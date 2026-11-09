@@ -68,8 +68,6 @@ Open **Screen Saver Settings** (Start → type *screen saver*), select *Metaball
 
 |Setting|Range|Default|Description|
 |-|-|-|-|
-|`net48 x64`|.NET Framework 4.8|64-bit|[.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48) (built into Windows 10 1903+ and Windows 11)|
-|`net48 x86`|.NET Framework 4.8|32-bit|[.NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48) (built into Windows 10 1903+ and Windows 11)|
 |**Color scheme**|Blue / Red|Blue|Color of the glowing blobs|
 |**Number of blobs**|2 - 3|3|How many blobs float on the screen|
 |**Speed**|0.25x - 3.00x|1.00x|How fast the blobs move|
